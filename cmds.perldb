@@ -2,8 +2,8 @@ b Euler377::calc_multiplier
 c
 b 21
 c
-x \%mult_cache
+print %mult_cache
 c
-x \%mult_cache
+print %mult_cache
 c
-x \%mult_cache
+print %mult_cache
