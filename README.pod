@@ -1,0 +1,58 @@
+=encoding utf8
+
+=head1 ABOUT
+
+To reproduce the bug with the perl debugger (dating to at least perl-5.10.1)
+run
+
+    bash invoke-debugger.bash
+
+And then inside the debugger type:
+
+    source cmds.perldb
+
+I'm getting an output such as:
+
+    shlomif@telaviv1:git$ bash invoke-debugger.bash
+
+    Loading DB routines from perl5db.pl version 1.49
+    Editor support available.
+
+    Enter h or 'h h' for help, or 'man perldebug' for more help.
+
+    main::(./euler377-test-1.pl:8): foreach my $n (1 .. 2)
+    main::(./euler377-test-1.pl:9): {
+      DB<1279> source cmds.perldb
+    >> b Euler377::calc_multiplier
+    >> c
+    Euler377::calc_multiplier(Euler377.pm:10):
+    10:         my ($n) = @_;
+    >> b 21
+    >> c
+    Euler377::recurse_digits(Euler377.pm:21):
+    21:         return;
+    >> x \%mult_cache
+    0  HASH(0x1ed6f88)
+         empty hash
+    >> c
+    Euler377::calc_multiplier(Euler377.pm:10):
+    10:         my ($n) = @_;
+    >> x \%mult_cache
+    0  HASH(0x19b09e8)
+       1 => 200
+    >> c
+    Euler377::recurse_digits(Euler377.pm:21):
+    21:         return;
+    >> x \%mult_cache
+    0  HASH(0x1f1faf0)
+         empty hash
+      DB<1285> q
+    shlomif@telaviv1:~/progs/riddles/project-euler/hg/project-euler/377/2git$
+
+=head1 LICENSE
+
+Copyright by Shlomi Fish, 2015 under MIT/X11 license or any other licence
+of your choice.
+
+=cut
+
