@@ -2,8 +2,8 @@ b Euler377::calc_multiplier
 c
 b 21
 c
-print %mult_cache
+print "<<", join(",",%mult_cache), ">>", "\n";
 c
-print %mult_cache
+print "<<", join(",",%mult_cache), ">>", "\n";
 c
-print %mult_cache
+print "<<", join(",",%mult_cache), ">>", "\n";

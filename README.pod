@@ -13,7 +13,7 @@ And then inside the debugger type:
 
 I'm getting an output such as:
 
-    shlomif@telaviv1:git$ bash invoke-debugger.bash
+    shlomif@telaviv1:~/progs/riddles/project-euler/perl-d-bug-1$ bash invoke-debugger.bash
 
     Loading DB routines from perl5db.pl version 1.49
     Editor support available.
@@ -22,7 +22,7 @@ I'm getting an output such as:
 
     main::(./euler377-test-1.pl:8): foreach my $n (1 .. 2)
     main::(./euler377-test-1.pl:9): {
-      DB<1279> source cmds.perldb
+      DB<1339> source cmds.perldb
     >> b Euler377::calc_multiplier
     >> c
     Euler377::calc_multiplier(Euler377.pm:10):
@@ -31,23 +31,23 @@ I'm getting an output such as:
     >> c
     Euler377::recurse_digits(Euler377.pm:21):
     21:         return;
-    >> x \%mult_cache
-    0  HASH(0x1ed6f88)
-         empty hash
+    >> print "<<", join(",",%mult_cache), ">>", "\n";
+    <<>>
+
     >> c
     Euler377::calc_multiplier(Euler377.pm:10):
     10:         my ($n) = @_;
-    >> x \%mult_cache
-    0  HASH(0x19b09e8)
-       1 => 200
+    >> print "<<", join(",",%mult_cache), ">>", "\n";
+    <<1,200>>
+
     >> c
     Euler377::recurse_digits(Euler377.pm:21):
     21:         return;
-    >> x \%mult_cache
-    0  HASH(0x1f1faf0)
-         empty hash
-      DB<1285> q
-    shlomif@telaviv1:~/progs/riddles/project-euler/hg/project-euler/377/2git$
+    >> print "<<", join(",",%mult_cache), ">>", "\n";
+    <<>>
+
+      DB<1345> q
+
 
 =head1 LICENSE
 
